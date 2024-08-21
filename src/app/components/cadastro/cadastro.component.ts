@@ -15,6 +15,7 @@ export class CadastroComponent {
 
   cadastro(): void {
     //
+    this.roteador.navigate([`tela-inicial/${this.usuario.id}`]);
   }
 
 }

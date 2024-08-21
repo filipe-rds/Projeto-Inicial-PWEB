@@ -15,6 +15,7 @@ export class LoginComponent {
 
   login(): void {
     //
+    this.roteador.navigate([`tela-inicial/${this.usuario.id}`]);
   }
 
 }
