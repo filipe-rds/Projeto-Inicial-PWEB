@@ -17,6 +17,16 @@ export class TelaInicialComponent implements OnInit{
     if (usuario && usuario.id) {
       this.roteador.navigate([`tela-inicial/${usuario.id}`]);
     }
+    this.verificarRotaAtual();
+  }
+
+  verificarRotaAtual(): void {
+    this.roteador.events.subscribe(() => {
+      const rotaAtual = this.roteador.url;
+      if (rotaAtual.includes('login') || rotaAtual.includes('cadastro')) {
+        this.limparDiv();
+      }
+    });
   }
 
   toggleThemeMode() {
@@ -27,8 +37,8 @@ export class TelaInicialComponent implements OnInit{
     });
   }
 
-  limparDiv(id:string) {
-    const elemento = document.getElementById(id);
+  limparDiv() {
+    const elemento = document.getElementById('boas-vindas');
     if (elemento) {
       elemento.classList.add('hidden');
     }

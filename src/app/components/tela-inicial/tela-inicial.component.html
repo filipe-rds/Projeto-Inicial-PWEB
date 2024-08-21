@@ -8,7 +8,7 @@
         </a>
         <div class="flex w-1/2 justify-end content-center">
           <button class="inline-block text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" (click)="toggleThemeMode()">
-            @if(ThemeModeService.ThemeModeSignal() == 'dark'){
+            @if(themeService.themeModeSignal() == 'dark'){
               <mat-icon>light_mode</mat-icon>
             }@else{
               <mat-icon>dark_mode</mat-icon>
@@ -19,11 +19,11 @@
             <mat-icon>account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['login']" (click)="limparDiv("boas-vindas")">
+            <button mat-menu-item [routerLink]="['login']" (click)="limparDiv()">
               <mat-icon>login</mat-icon>
               <span>Entrar</span>
             </button>
-            <button mat-menu-item [routerLink]="['cadastro']" (click)="limparDiv("boas-vindas")">
+            <button mat-menu-item [routerLink]="['cadastro']" (click)="limparDiv()">
               <mat-icon>app_registration</mat-icon>
               <span>Cadastrar</span>
             </button>
@@ -42,7 +42,7 @@
 
     <!-- Left Col  -->
     <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-      @if (themeService.ThemeModeSignal() == 'dark') {
+      @if (themeService.themeModeSignal() == 'dark') {
         <router-outlet class="dark"></router-outlet>
       }@else{
         <router-outlet></router-outlet>
