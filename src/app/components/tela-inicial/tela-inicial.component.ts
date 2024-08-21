@@ -1,7 +1,7 @@
+import { LocalStorageService } from './../../shared/services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { ThemeModeService } from '../../shared/services/theme-mode.service';
-import { UsuarioService } from '../../shared/services/usuario.service';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -10,10 +10,10 @@ import { UsuarioService } from '../../shared/services/usuario.service';
 })
 export class TelaInicialComponent implements OnInit{
 
-  constructor(private rotaAtual: ActivatedRoute, private roteador: Router, public themeService: ThemeModeService, private usuarioService:UsuarioService) { }
+  constructor(private rotaAtual: ActivatedRoute, private roteador: Router, public themeService: ThemeModeService, private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
-    const usuario = this.usuarioService.lerUsuarioLocal();
+    const usuario = this.localStorageService.lerUsuario();
     if (usuario && usuario.id) {
       this.roteador.navigate([`tela-inicial/${usuario.id}`]);
     }

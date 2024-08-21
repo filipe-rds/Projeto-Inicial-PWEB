@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Disciplina } from '../models/disciplina';
 import { Tarefa } from '../models/tarefa';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +14,11 @@ export class UsuarioService {
 
   usuario: Usuario;
 
-  constructor(private httpClient: HttpClient) {
-    this.usuario = this.lerUsuarioLocal() || new Usuario("", "", "");
+  constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) {
+    this.usuario = this.localStorageService.lerUsuario() || new Usuario("", "", "");
   }
 
   private url_usuarios = 'http://localhost:3000/usuarios';
-
-  // Métodos do localStorage
-  armazenarUsuarioLocal(usuario: Usuario): void {
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-  }
-
-  lerUsuarioLocal(): Usuario | null {
-    const usuarioData = localStorage.getItem('usuario');
-    if (usuarioData) {
-      return JSON.parse(usuarioData);
-    }
-    return null;
-  }
-
-  removerUsuarioLocal(): void {
-    localStorage.removeItem('usuario');
-  }
-
-  atualizarUsuarioLocal(usuario: Usuario): void {
-    this.armazenarUsuarioLocal(usuario);
-  }
 
   // Métodos Json-server
   listarUsuarios(): Observable<Usuario[]>{ //ok
