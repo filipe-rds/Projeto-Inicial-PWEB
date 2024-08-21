@@ -1,0 +1,17 @@
+import { Disciplina } from './disciplina';
+
+export class Usuario {
+  public id: number;
+  public nome: string;
+  public email: string;
+  public senha: string;
+  public disciplinas: Disciplina[];
+
+  constructor(nome: string, email: string, senha: string) {
+    this.nome = nome;
+    this.email = email;
+    this.senha = senha;
+    this.disciplinas = [];
+  }
+
+}
