@@ -12,9 +12,10 @@ import { UsuarioTarefasComponent } from './components/usuario-tarefas/usuario-ta
 
 const routes: Routes = [
   {
-    path: 'tela-inicial',
+    path: '',
     component: TelaInicialComponent
   },
+  { path: '**', redirectTo: '' },
   {
     path: 'login',
     component: LoginComponent

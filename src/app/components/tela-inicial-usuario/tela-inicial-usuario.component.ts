@@ -11,16 +11,20 @@ import { UsuarioService } from '../../shared/services/usuario.service';
   styleUrl: './tela-inicial-usuario.component.scss'
 })
 
-export class TelaInicialUsuarioComponent {
+export class TelaInicialUsuarioComponent implements OnInit {
+
   constructor(private rotaAtual: ActivatedRoute, private roteador: Router, public themeService: ThemeModeService, private localStorageService: LocalStorageService, private usuarioService: UsuarioService) {
     const idUsuario = Number (this.rotaAtual.snapshot.paramMap.get('id'))  || undefined;
       if (idUsuario) {
         this.usuarioService.getUsuario(idUsuario).subscribe(
           usuario => {
-          this.usuarioService.usuario = usuario;
+            localStorageService.atualizarUsuario(usuario);
         });
-        localStorageService.atualizarUsuario(this.usuarioService.usuario);
       }
+  }
+
+  ngOnInit(): void {
+    //
   }
 
   toggleThemeMode() {
@@ -30,4 +34,8 @@ export class TelaInicialUsuarioComponent {
       window.location.reload();
     });
   }
+
+
+
+
 }
