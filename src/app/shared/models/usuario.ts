@@ -13,5 +13,4 @@ export class Usuario {
     this.senha = senha;
     this.disciplinas = [];
   }
-
 }

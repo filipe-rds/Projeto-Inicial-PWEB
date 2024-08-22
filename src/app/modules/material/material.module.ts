@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,20 +26,22 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports:
-  [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule,
-    SweetAlert2Module,
-    HttpClientModule,
-    MatInputModule,
-    FormsModule,
-  ]
+    [
+      CommonModule,
+      MatButtonModule,
+      MatCardModule,
+      MatIconModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatMenuModule,
+      SweetAlert2Module,
+      HttpClientModule,
+      MatInputModule,
+      FormsModule,
+      ReactiveFormsModule,
+    ]
 })
 export class MaterialModule { }

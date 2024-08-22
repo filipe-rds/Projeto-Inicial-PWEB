@@ -8,22 +8,18 @@
         </a>
         <div class="flex w-1/2 justify-end content-center">
           <button class="inline-block text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" (click)="toggleThemeMode()">
-            @if(themeService.themeModeSignal() == 'dark'){
-              <mat-icon>light_mode</mat-icon>
-            }@else{
-              <mat-icon>dark_mode</mat-icon>
-            }
+            <mat-icon>{{ themeService.themeModeSignal() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
           </button>
 
-          <button [matMenuTriggerFor]="menu" class="inline-block text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 ">
+          <button [matMenuTriggerFor]="menu" class="inline-block text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4">
             <mat-icon>account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['login']" (click)="limparDiv()">
+            <button mat-menu-item (click)="login()">
               <mat-icon>login</mat-icon>
               <span>Entrar</span>
             </button>
-            <button mat-menu-item [routerLink]="['cadastro']" (click)="limparDiv()">
+            <button mat-menu-item (click)="cadastrar()">
               <mat-icon>app_registration</mat-icon>
               <span>Cadastrar</span>
             </button>
@@ -42,37 +38,31 @@
 
     <!-- Left Col  -->
     <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-      <router-outlet></router-outlet>
-      <div id="boas-vindas">
-        <h1 class="my-4 text-3xl md:text-5xl text-gray-900 dark:text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
-          O melhor gerenciador de estudos
-        </h1>
-        <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle text-gray-900 dark:text-white">
-          Venha embarcar no caminho rumo ao sucesso nos estudos com o Study Manager !!!
-        </p>
-        <p class="text-sm text-gray-600 dark:text-white font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
-          Acesse nossa plataforma e comece a estudar agora mesmo!
-        </p>
-      </div>
+      <ng-container *ngIf="escolha === 'login'; else cadastroTemplate">
+        <login></login>
+      </ng-container>
+      <ng-template #cadastroTemplate>
+        <cadastro></cadastro>
+      </ng-template>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800 w-full max-w-screen-xl mx-auto">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">Study Manager™</a>. All Rights Reserved.</span>
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">Study Manager™</a>. Todos os direitos reservados.</span>
       <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-          <a href="#" class="hover:underline me-4 md:me-6">About</a>
+          <a href="#" class="hover:underline me-4 md:me-6">Sobre</a>
         </li>
         <li>
-          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+          <a href="#" class="hover:underline me-4 md:me-6">Política de Privacidade</a>
         </li>
         <li>
-          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+          <a href="#" class="hover:underline me-4 md:me-6">Licenciamento</a>
         </li>
         <li>
-          <a href="#" class="hover:underline">Contact</a>
+          <a href="#" class="hover:underline">Contato</a>
         </li>
       </ul>
     </div>

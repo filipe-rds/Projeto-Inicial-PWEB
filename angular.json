@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gerenciador-estudos": {
+    "study-manager": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gerenciador-estudos",
+            "outputPath": "dist/study-manager",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gerenciador-estudos:build:production"
+              "buildTarget": "study-manager:build:production"
             },
             "development": {
-              "buildTarget": "gerenciador-estudos:build:development"
+              "buildTarget": "study-manager:build:development"
             }
           },
           "defaultConfiguration": "development"

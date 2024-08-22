@@ -12,7 +12,4 @@ export class Tarefa {
     this.nome = nome;
     this.descricao = descricao;
   }
-
-
-
 }
