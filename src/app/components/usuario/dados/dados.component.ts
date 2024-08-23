@@ -42,16 +42,21 @@ export class DadosComponent implements OnInit {
       return;
     }
 
-    this.usuarioService.alterarUsuario(usuarioAtualizado).subscribe(() => {
-      this.sweet.info("Dados salvos");
-      return this.usuario;
-    }, error => {
-      this.sweet.info('Erro ao alterar o usuario');
-    });
+    this.usuarioService.alterarUsuario(usuarioAtualizado).subscribe(
+      () => {
+        this.sweet.info("Dados salvos");
+        return this.usuario;
+      },
+      error => {
+        this.sweet.info('Erro ao alterar o usuario');
+      }
+    );
   }
 
   cancelar() {
-    this.roteador.navigate(['tela-usuario']);
+    if (this.usuario?.id) {
+      this.roteador.navigate([`tela-usuario/${this.usuario.id}`]);
+    }
   }
 
 }

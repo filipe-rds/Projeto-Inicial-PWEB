@@ -1,1 +1,41 @@
-{}
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "lucas",
+      "email": "lucas@gmail",
+      "senha": "123",
+      "disciplinas": []
+    },
+    {
+      "id": 2,
+      "nome": "gabrielFelix1",
+      "email": "gabriel@gmail",
+      "senha": "123",
+      "disciplinas": [
+        {
+          "id": 1,
+          "nome": "matematica"
+        },
+        {
+          "id": 2,
+          "nome": "fisica"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "filipe",
+      "email": "filipe@gmail",
+      "senha": "123",
+      "disciplinas": []
+    },
+    {
+      "id": 4,
+      "nome": "joao",
+      "email": "joao@gmail",
+      "senha": "123",
+      "disciplinas": []
+    }
+  ]
+}

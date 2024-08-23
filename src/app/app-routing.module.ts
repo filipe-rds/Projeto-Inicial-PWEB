@@ -9,15 +9,9 @@ const routes: Routes = [
     component: TelaInicialComponent
   },
   {
-    path: 'tela-usuario',
+    path: 'tela-usuario/:id',  // Corrigido: Defina o parâmetro `id` corretamente
     component: TelaUsuarioComponent
   },
-  {
-    path: 'tela-usuario:/id',
-    component: TelaUsuarioComponent
-  },
-
-
 ];
 
 @NgModule({
