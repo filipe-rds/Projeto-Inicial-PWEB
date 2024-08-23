@@ -166,6 +166,36 @@ export class UsuarioService {
 
     }
 
+    removerDisciplina(idDisciplina:string):boolean{
+
+      let usuario:Usuario | null = this.localStorageService.lerUsuario();
+
+      if(usuario == null){
+        throw new Error("Usuário não encontrado");
+      }
+
+      if(usuario && usuario.disciplinas.length >0 ){
+
+        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == Number(idDisciplina));
+
+        if(disciplinaEncontrada){
+          usuario.disciplinas.filter(element => element.id != Number(idDisciplina));
+          this.localStorageService.atualizarUsuario(usuario);
+          this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
+          return true;
+        }
+        else{
+          throw new Error("Disciplina não encontrada");
+        }
+      }
+      else
+      {
+        throw new Error("Usuário não possui nenhuma disicplina cadastrada");
+      }
+
+
+    }
+
 
 
   // Métodos crud de tarefa
