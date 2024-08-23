@@ -7,7 +7,7 @@ export class Disciplina {
   public descricao: string;
   public tarefas: Tarefa[] = [];
 
-  constructor(nome: string, usuario: Usuario, descricao: string) {
+  constructor(nome: string, descricao: string) {
     this.id = 0;
     this.nome = nome;
     this.descricao = descricao;

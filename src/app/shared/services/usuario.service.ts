@@ -69,7 +69,7 @@ export class UsuarioService {
         const usuarioExistente = UsuariosRetornados.find(element => element.email === usuario.email);
 
         let tamanho: number = UsuariosRetornados.length;
-        let id: number = UsuariosRetornados[tamanho - 1].id + 1;
+        let id: number = Number(UsuariosRetornados[tamanho - 1].id) + 1;
 
         usuario.id = id;
 
@@ -88,7 +88,7 @@ export class UsuarioService {
     );
   }
 
-  validarUsuario(usuario: Usuario): Observable<Usuario> {  // Altere para Observable<Usuario>
+  validarUsuario(usuario: Usuario): Observable<Usuario> {
     return this.listarUsuarios().pipe(
       switchMap(usuariosRetornados => {
         const usuarioExistente = usuariosRetornados.find(
@@ -115,11 +115,11 @@ export class UsuarioService {
 
   // Métodos crud de disciplina
 
-  criarDisciplina(disciplina: Disciplina, usuario: Usuario): Observable<Usuario> {
+  criarDisciplina(disciplina: Disciplina): Observable<Usuario> {
 
     return this.listarUsuarios().pipe(
       switchMap(usuarios => {
-        const usuarioExistente = usuarios.find(element => element.email === usuario.email);
+        const usuarioExistente = usuarios.find(element => element.email === this.usuario.email);
 
 
         if (usuarioExistente) {
@@ -128,7 +128,7 @@ export class UsuarioService {
           let id: number;
 
           if (tamanho > 0) {
-            id = usuarioExistente.disciplinas[tamanho - 1].id + 1;
+            id = Number(usuarioExistente.disciplinas[tamanho - 1].id) + 1;
           } else {
             id = 1;
           }

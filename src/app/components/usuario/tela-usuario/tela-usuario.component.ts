@@ -6,7 +6,7 @@ import { ThemeModeService } from '../../../shared/services/theme-mode.service';
 import { UsuarioService } from '../../../shared/services/usuario.service';
 
 @Component({
-  selector: 'app-tela-usuario',
+  selector: 'tela-usuario',
   templateUrl: './tela-usuario.component.html',
   styleUrl: './tela-usuario.component.scss'
 })
