@@ -149,6 +149,23 @@ export class UsuarioService {
     );
   }
 
+    listarDisciplinas(): Disciplina[]{
+
+      let usuario:Usuario | null = this.localStorageService.lerUsuario();
+
+      if(usuario == null){
+        throw new Error("Usuário não encontrado");
+      }
+      
+      if(usuario && usuario.disciplinas.length >0 ){
+        return usuario.disciplinas;
+      }
+      else{
+        throw new Error("Usuário não possui nenhuma disicplina cadastrada");
+      }
+
+    }
+
 
 
   // Métodos crud de tarefa
