@@ -167,7 +167,7 @@ export class UsuarioService {
 
     }
 
-    removerDisciplina(idDisciplina:string):boolean{
+    removerDisciplina(idDisciplina:number):boolean{
 
       let usuario:Usuario | null = this.localStorageService.lerUsuario();
 
@@ -177,12 +177,20 @@ export class UsuarioService {
 
       if(usuario && usuario.disciplinas.length >0 ){
 
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == Number(idDisciplina));
+        let indexdisciplina = usuario.disciplinas.findIndex(element => element.id == idDisciplina);
 
-        if(disciplinaEncontrada){
-          usuario.disciplinas.filter(element => element.id != Number(idDisciplina));
+        if(indexdisciplina !== -1){
+          usuario.disciplinas.splice(indexdisciplina,1);
+          console.log(usuario);
           this.localStorageService.atualizarUsuario(usuario);
-          this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
+          this.httpClient.put<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario).subscribe({
+            next: (response) => {
+              console.log('Usuário atualizado com sucesso:', response);
+            },
+            error: (err) => {
+              this.sweet.erro('Erro ao atualizar o usuário: ' + err);
+            }
+          });
           return true;
         }
         else{
@@ -226,7 +234,6 @@ export class UsuarioService {
         // }
         if (indiceDisciplina !== -1) {
           usuario.disciplinas[indiceDisciplina] = disciplina;
-    
           this.localStorageService.atualizarUsuario(usuario);
           this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario)
             .subscribe({

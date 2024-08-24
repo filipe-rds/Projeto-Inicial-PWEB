@@ -7,11 +7,6 @@
       "senha": "123",
       "disciplinas": [
         {
-          "id": 1,
-          "nome": "matematica2",
-          "descricao": "estudar2"
-        },
-        {
           "id": 2,
           "nome": "matematica",
           "descricao": "estudar",

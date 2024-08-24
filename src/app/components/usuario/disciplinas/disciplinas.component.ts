@@ -44,15 +44,19 @@ export class DisciplinasComponent implements OnInit {
 
   }
 
-
   criarDisciplina() {
     this.usuarioService.criarDisciplina(this.disciplina).subscribe({
       next: res => this.sweet.sucesso("disciplina criada"),
       error: err => this.sweet.erro(err)
     });
   }
+
   alterarDisciplina(){
     let disciplinaalt = this.formulario.value;
     this.usuarioService.alterarDisciplina(disciplinaalt);
+  }
+
+  removerDisciplina(){
+    this.usuarioService.removerDisciplina(this.disciplina.id);
   }
 }
