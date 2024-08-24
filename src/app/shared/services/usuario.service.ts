@@ -197,7 +197,7 @@ export class UsuarioService {
 
     }
 
-    alterarDisciplina(disciplinaId:string):boolean{
+    alterarDisciplina(disciplina:Disciplina):boolean{
 
       let usuario:Usuario | null = this.localStorageService.lerUsuario();
 
@@ -207,9 +207,11 @@ export class UsuarioService {
 
       if(usuario && usuario.disciplinas.length >0 ){
 
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == Number(disciplinaId));
+        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == disciplina.id);
+
 
         if(disciplinaEncontrada){
+          disciplinaEncontrada = disciplina;
           this.localStorageService.atualizarUsuario(usuario);
           this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
           return true;
@@ -224,8 +226,7 @@ export class UsuarioService {
       }
 
     }
-
-
+    
 
 
       
