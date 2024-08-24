@@ -199,6 +199,13 @@ export class UsuarioService {
 
     alterarDisciplina(disciplina:Disciplina):boolean{
 
+      if(disciplina.nome.length <= 0){
+        throw new Error("Nome da disciplina não pode ser vazio");
+      }
+      if(disciplina.descricao.length <= 0){
+        throw new Error("Descrição da disciplina não pode ser vazia");
+      }
+
       let usuario:Usuario | null = this.localStorageService.lerUsuario();
 
       if(usuario == null){
