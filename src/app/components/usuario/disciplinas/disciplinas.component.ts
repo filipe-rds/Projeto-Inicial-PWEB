@@ -57,6 +57,13 @@ export class DisciplinasComponent implements OnInit {
   }
 
   removerDisciplina(){
-    this.usuarioService.removerDisciplina(this.disciplina.id);
+
+    try{
+      this.usuarioService.removerDisciplina(this.disciplina.id);
+    }
+    catch(err){
+      this.sweet.erro("Erro ao remover disciplina: " + err);
+    }
+
   }
 }

@@ -186,6 +186,7 @@ export class UsuarioService {
           this.httpClient.put<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario).subscribe({
             next: (response) => {
               console.log('Usuário atualizado com sucesso:', response);
+              return true;
             },
             error: (err) => {
               this.sweet.erro('Erro ao atualizar o usuário: ' + err);
