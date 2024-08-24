@@ -8,6 +8,7 @@ import { LocalStorageService } from './local-storage.service';
 import { MensagemSweetService } from './mensagem-sweet.service';
 import { of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+import { DoStatement } from 'typescript';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class UsuarioService {
   deletarUsuario(id: number): Observable<Usuario> {
     return this.httpClient.delete<Usuario>(`${this.url_usuarios}/${id}`);
   }
-
+ 
   alterarUsuario(usuario: Usuario): Observable<Usuario> {
     return this.listarUsuarios().pipe(
       switchMap(usuarios => {
@@ -196,7 +197,7 @@ export class UsuarioService {
 
     }
 
-    alterarDisciplinaNome(nome:string):boolean{
+    alterarDisciplina(disciplina:Disciplina):boolean{
 
       let usuario:Usuario | null = this.localStorageService.lerUsuario();
 
@@ -206,10 +207,9 @@ export class UsuarioService {
 
       if(usuario && usuario.disciplinas.length >0 ){
 
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.nome == nome);
+        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == disciplina.id);
 
         if(disciplinaEncontrada){
-          disciplinaEncontrada.nome = nome;
           this.localStorageService.atualizarUsuario(usuario);
           this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
           return true;
@@ -225,34 +225,6 @@ export class UsuarioService {
 
     }
 
-    alterarDisciplinaDescricao(descricao:string):boolean{
-
-      let usuario:Usuario | null = this.localStorageService.lerUsuario();
-
-      if(usuario == null){
-        throw new Error("Usuário não encontrado");
-      }
-
-      if(usuario && usuario.disciplinas.length >0 ){
-
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.descricao == descricao);
-
-        if(disciplinaEncontrada){
-          disciplinaEncontrada.descricao = descricao;
-          this.localStorageService.atualizarUsuario(usuario);
-          this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
-          return true;
-        }
-        else{
-          throw new Error("Disciplina não encontrada");
-        }
-      }
-      else
-      {
-        throw new Error("Usuário não possui nenhuma disicplina cadastrada");
-      }
-
-    }
 
       
 
