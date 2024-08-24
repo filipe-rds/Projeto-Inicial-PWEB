@@ -214,13 +214,30 @@ export class UsuarioService {
 
       if(usuario && usuario.disciplinas.length >0 ){
 
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == disciplina.id);
-
-
-        if(disciplinaEncontrada){
-          disciplinaEncontrada = disciplina;
+        //let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == disciplina.id);
+        const indiceDisciplina = usuario.disciplinas.findIndex(element => element.id == disciplina.id);
+        // if(disciplinaEncontrada){
+        //   console.log(disciplina);
+        //   disciplinaEncontrada = disciplina;
+        //   console.log(disciplinaEncontrada);
+        //   this.localStorageService.atualizarUsuario(usuario);
+        //   this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
+        //   return true;
+        // }
+        if (indiceDisciplina !== -1) {
+          usuario.disciplinas[indiceDisciplina] = disciplina;
+    
           this.localStorageService.atualizarUsuario(usuario);
-          this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario);
+          this.httpClient.patch<Usuario>(`${this.url_usuarios}/${usuario.id}`, usuario)
+            .subscribe({
+              next: (response) => {
+                console.log('Usuário atualizado com sucesso:', response);
+              },
+              error: (err) => {
+                this.sweet.erro('Erro ao atualizar o usuário: ' + err);
+              }
+            });
+    
           return true;
         }
         else{

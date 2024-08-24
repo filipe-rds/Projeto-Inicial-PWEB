@@ -5,7 +5,19 @@
       "nome": "lucas",
       "email": "lucas@gmail",
       "senha": "123",
-      "disciplinas": []
+      "disciplinas": [
+        {
+          "id": 1,
+          "nome": "matematica2",
+          "descricao": "estudar2"
+        },
+        {
+          "id": 2,
+          "nome": "matematica",
+          "descricao": "estudar",
+          "tarefas": []
+        }
+      ]
     },
     {
       "id": "2",
@@ -45,7 +57,7 @@
       "disciplinas": []
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "1234",
       "email": "1234",
       "senha": "1234",
