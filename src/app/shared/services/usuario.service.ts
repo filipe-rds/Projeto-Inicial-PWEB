@@ -197,7 +197,7 @@ export class UsuarioService {
 
     }
 
-    alterarDisciplina(disciplina:Disciplina):boolean{
+    alterarDisciplina(disciplinaId:string):boolean{
 
       let usuario:Usuario | null = this.localStorageService.lerUsuario();
 
@@ -207,7 +207,7 @@ export class UsuarioService {
 
       if(usuario && usuario.disciplinas.length >0 ){
 
-        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == disciplina.id);
+        let disciplinaEncontrada = usuario.disciplinas.find(element => element.id == Number(disciplinaId));
 
         if(disciplinaEncontrada){
           this.localStorageService.atualizarUsuario(usuario);
@@ -224,6 +224,8 @@ export class UsuarioService {
       }
 
     }
+
+
 
 
       
