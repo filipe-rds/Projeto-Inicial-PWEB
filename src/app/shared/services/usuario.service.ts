@@ -255,7 +255,7 @@ export class UsuarioService {
       }
       else
       {
-        throw new Error("Usuário não possui nenhuma disicplina cadastrada");
+        throw new Error("Usuário não possui nenhuma disciplina cadastrada");
       }
 
     }

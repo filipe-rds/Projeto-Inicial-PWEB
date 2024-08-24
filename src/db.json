@@ -8,6 +8,11 @@
       "disciplinas": [
         {
           "id": 2,
+          "nome": "matematica2",
+          "descricao": "estudar"
+        },
+        {
+          "id": 3,
           "nome": "matematica",
           "descricao": "estudar",
           "tarefas": []

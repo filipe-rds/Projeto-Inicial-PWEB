@@ -55,6 +55,7 @@ export class DisciplinasComponent implements OnInit {
     try{
       let disciplinaalt = this.formulario.value;
       this.usuarioService.alterarDisciplina(disciplinaalt);
+      this.sweet.sucesso("Disciplina alterada com sucesso!");
 
     }
     catch(err){
@@ -66,6 +67,7 @@ export class DisciplinasComponent implements OnInit {
 
     try{
       this.usuarioService.removerDisciplina(this.disciplina.id);
+      this.sweet.sucesso("Disciplina removida com sucesso!");
     }
     catch(err){
       this.sweet.erro("Erro ao remover disciplina: " + err);
