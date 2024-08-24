@@ -52,9 +52,15 @@ export class DisciplinasComponent implements OnInit {
   }
 
   alterarDisciplina(){
-    let disciplinaalt = this.formulario.value;
-    this.usuarioService.alterarDisciplina(disciplinaalt);
+    try{
+      let disciplinaalt = this.formulario.value;
+      this.usuarioService.alterarDisciplina(disciplinaalt);
+
+    }
+    catch(err){
+      this.sweet.erro("Erro ao alterar disciplina: " + err);
   }
+}
 
   removerDisciplina(){
 
