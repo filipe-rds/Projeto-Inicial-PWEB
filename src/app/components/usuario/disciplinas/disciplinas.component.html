@@ -13,9 +13,9 @@
         <p>{{ disciplina.descricao }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button class="text-blue-500 dark:text-blue-300"
+        <button mat-button color="primary"
           (click)="openDialog('editar', disciplina); $event.stopPropagation()">Editar</button>
-        <button mat-button color="warn" class="text-red-500 dark:text-red-300"
+        <button mat-button color="warn" 
           (click)="removerDisciplina(disciplina.id); $event.stopPropagation()">Remover</button>
       </mat-card-actions>
     </mat-card>
