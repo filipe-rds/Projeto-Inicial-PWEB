@@ -7,15 +7,16 @@
       "senha": "123",
       "disciplinas": [
         {
-          "id": 2,
-          "nome": "matematica2",
-          "descricao": "estudar"
-        },
-        {
-          "id": 3,
+          "id": 1,
           "nome": "matematica",
-          "descricao": "estudar",
-          "tarefas": []
+          "descricao": "123",
+          "tarefas": [
+            {
+              "id": 1,
+              "nome": "calculo ",
+              "descricao": "123"
+            }
+          ]
         }
       ]
     },
@@ -24,16 +25,7 @@
       "nome": "gabrielFelix1",
       "email": "gabriel@gmail",
       "senha": "123",
-      "disciplinas": [
-        {
-          "id": 1,
-          "nome": "matematica"
-        },
-        {
-          "id": 2,
-          "nome": "fisica"
-        }
-      ]
+      "disciplinas": []
     },
     {
       "id": "3",

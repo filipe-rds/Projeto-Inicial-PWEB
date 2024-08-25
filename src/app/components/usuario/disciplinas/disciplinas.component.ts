@@ -67,7 +67,7 @@ export class DisciplinasComponent implements OnInit {
       this.sweet.erro('Por favor, preencha todos os campos obrigatórios');
       return;
     }
-
+    disciplina.tarefas =[];
     this.usuarioService.criarDisciplina(disciplina).subscribe({
       next: (usuarioAtualizado) => {
         this.disciplinas = usuarioAtualizado.disciplinas;

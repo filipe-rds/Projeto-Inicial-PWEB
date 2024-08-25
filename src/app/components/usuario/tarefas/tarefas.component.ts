@@ -90,20 +90,17 @@ export class TarefasComponent implements OnInit {
   }
 
   editarTarefa(tarefa: Tarefa): void {
-    // if (!this.disciplinaSelecionada) return;
+    if (!this.disciplinaSelecionada) return;
 
-    // try {
-    //   const sucesso = this.usuarioService.alterarTarefa(
-    //     String(this.disciplinaSelecionada.id),
-    //     tarefa
-    //   );
-    //   if (sucesso) {
-    //     this.carregarTarefas(String(this.disciplinaSelecionada.id)); // Atualiza a lista de tarefas
-    //     this.sweet.sucesso('Tarefa atualizada com sucesso');
-    //   }
-    // } catch (err) {
-    //   this.sweet.erro('Erro ao atualizar a tarefa' );
-    // }
+    try {
+      const sucesso = this.usuarioService.alterarTarefa(tarefa,String(this.disciplinaSelecionada.id));
+      if (sucesso) {
+        this.carregarTarefas(String(this.disciplinaSelecionada.id)); // Atualiza a lista de tarefas
+        this.sweet.sucesso('Tarefa atualizada com sucesso');
+      }
+    } catch (err) {
+      this.sweet.erro('Erro ao atualizar a tarefa' );
+    }
   }
 
   removerTarefa(idTarefa: number): void {

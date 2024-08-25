@@ -184,7 +184,7 @@ export class UsuarioService {
       throw new Error('Usuário não encontrado');
     }
 
-    if (usuario && usuario.disciplinas.length > 0) {
+    if (usuario && usuario.disciplinas.length >= 0) {
       return usuario.disciplinas;
     } else {
       throw new Error('Usuário não possui nenhuma disicplina cadastrada');
@@ -296,9 +296,10 @@ export class UsuarioService {
       let disciplinaEncontrada = usuario.disciplinas.find(
         (element) => element.id == Number(idDisciplina)
       );
+      console.log(disciplinaEncontrada);
 
       if (disciplinaEncontrada) {
-        if (disciplinaEncontrada.tarefas.length > 0) {
+        if (disciplinaEncontrada.tarefas.length >= 0) {
           return disciplinaEncontrada.tarefas;
         } else {
           throw new Error('Disciplina não possui nenhuma tarefa cadastrada');
