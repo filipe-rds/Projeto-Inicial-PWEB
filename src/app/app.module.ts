@@ -13,6 +13,7 @@ import { DadosComponent } from './components/usuario/dados/dados.component';
 import { DisciplinasComponent } from './components/usuario/disciplinas/disciplinas.component';
 import { TarefasComponent } from './components/usuario/tarefas/tarefas.component';
 import { ProgressoComponent } from './components/usuario/progresso/progresso.component';
+import { ModalComponent } from './components/usuario/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProgressoComponent } from './components/usuario/progresso/progresso.com
     DadosComponent,
     DisciplinasComponent,
     TarefasComponent,
-    ProgressoComponent
+    ProgressoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
