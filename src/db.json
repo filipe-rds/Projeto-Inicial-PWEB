@@ -5,14 +5,73 @@
       "nome": "lucas",
       "email": "lucas@gmail",
       "senha": "123",
-      "disciplinas": []
+      "disciplinas": [
+        {
+          "id": 1,
+          "nome": "matematica1",
+          "descricao": "123",
+          "tarefas": []
+        },
+        {
+          "id": 2,
+          "nome": "matematica2",
+          "descricao": "123",
+          "tarefas": [
+            {
+              "id": 1,
+              "nome": "teste",
+              "descricao": "123"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2",
-      "nome": "pedro",
+      "nome": "pedrolucas",
       "email": "pedro@gmail",
       "senha": "123",
-      "disciplinas": []
+      "disciplinas": [
+        {
+          "id": 1,
+          "nome": "matematica3",
+          "descricao": "123",
+          "tarefas": [
+            {
+              "id": 1,
+              "nome": "teste",
+              "descricao": "123"
+            },
+            {
+              "id": 2,
+              "nome": "teste",
+              "descricao": "1234"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "matematica4",
+          "descricao": "123",
+          "tarefas": [
+            {
+              "id": 1,
+              "nome": "teste",
+              "descricao": "21451233"
+            },
+            {
+              "id": 2,
+              "nome": "teste",
+              "descricao": "214154"
+            },
+            {
+              "id": 3,
+              "nome": "teste",
+              "descricao": "214124"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

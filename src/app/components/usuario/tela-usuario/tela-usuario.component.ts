@@ -36,7 +36,7 @@ export class TelaUsuarioComponent implements OnInit {
   }
 
   logout() {
-    this.localStorageService.removerUsuario();
+    this.usuarioService.logout();
     this.roteador.navigate(['']);
   }
   dados() {

@@ -18,7 +18,9 @@ export class LoginComponent {
     this.usuarioService.validarUsuario(this.usuario).subscribe({
       next: (usuarioEncontrado) => {
         this.sweet.sucesso('Usuário logado: ' + usuarioEncontrado.nome);
-        this.roteador.navigate([`tela-usuario/${usuarioEncontrado.id}`]);
+        this.roteador.navigate([`tela-usuario/${usuarioEncontrado.id}`]).then(() => {
+          window.location.reload();
+        });
       },
       error: error => {
         // Lida com o erro se o login falhar

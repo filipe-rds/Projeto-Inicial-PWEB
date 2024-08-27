@@ -134,9 +134,9 @@ export class UsuarioService {
     );
   }
 
-  logout(): boolean {
+  logout(): void {
     this.localStorageService.removerUsuario();
-    return true;
+    this.usuario = new Usuario("","","");
   }
 
   // Métodos crud de disciplina
