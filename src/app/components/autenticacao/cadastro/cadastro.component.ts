@@ -37,7 +37,9 @@ export class CadastroComponent {
       this.sweet.info('Erro ao inserir usuário:');
     }
     );
-    this.roteador.navigate([`tela-inicial/${this.usuario.id}`]);
+    this.roteador.navigate([`tela-usuario/${this.usuario.id}`]).then(() => {
+      window.location.reload();
+    });
   }
 
 }

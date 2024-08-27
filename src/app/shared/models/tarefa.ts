@@ -2,13 +2,12 @@ import { Disciplina } from "./disciplina";
 
 export class Tarefa {
   public id: number;
-  public disciplina: Disciplina;
+  public disciplina!: Disciplina;
   public nome: string;
   public descricao: string;
 
-  constructor(id:number, nome: string, disciplina: Disciplina, descricao: string) {
-    this.id = id;
-    this.disciplina = disciplina;
+  constructor(nome: string, descricao: string) {
+    this.id = 0;
     this.nome = nome;
     this.descricao = descricao;
   }

@@ -16,19 +16,17 @@ export class LoginComponent {
 
   login(): void {
     this.usuarioService.validarUsuario(this.usuario).subscribe({
-      next: usuarioRetornado => {
-        const usuariosArray = usuarioRetornado;
-        const usuarioLogado = usuariosArray.find(element => element.email === this.usuario.email && element.senha === this.usuario.senha);
-        if (usuarioLogado) {
-          this.sweet.info('Usuário logado:');
-        }
+      next: (usuarioEncontrado) => {
+        this.sweet.sucesso('Usuário logado: ' + usuarioEncontrado.nome);
+        this.roteador.navigate([`tela-usuario/${usuarioEncontrado.id}`]).then(() => {
+          window.location.reload();
+        });
       },
       error: error => {
         // Lida com o erro se o login falhar
         this.sweet.info('Erro ao acessar usuário: ' + error.message);
       }
     });
-    this.roteador.navigate([`tela-inicial/${this.usuario.id}`]);
   }
 
 }
