@@ -17,9 +17,11 @@ export class TelaInicialComponent implements OnInit {
   ngOnInit(): void {
     const usuario = this.localStorageService.lerUsuario();
     if (usuario && usuario.id) {
-      // Verifique se a navegação já está no caminho correto
+      // Verifica se a navegação já está no caminho correto
       if (this.roteador.url !== `/tela-inicial/${usuario.id}`) {
-        this.roteador.navigate([`/tela-inicial/${usuario.id}`]);
+        this.roteador.navigate([`/tela-inicial/${usuario.id}`]).then(() => {
+          window.location.reload();
+        });
       }
     }
   }
