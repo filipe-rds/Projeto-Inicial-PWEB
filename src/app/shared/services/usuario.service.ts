@@ -34,7 +34,7 @@ export class UsuarioService {
     return this.listarUsuarios().pipe(
       switchMap((UsuariosRetornados) => {
         if (UsuariosRetornados.length === 0) {
-          usuario.id = 1;
+          usuario.id = "1";
           this.localStorageService.armazenarUsuario(usuario);
           return this.httpClient.post<Usuario>(this.url_usuarios, usuario);
         }
@@ -46,7 +46,7 @@ export class UsuarioService {
         let tamanho: number = UsuariosRetornados.length;
         let id: number = Number(UsuariosRetornados[tamanho - 1].id) + 1;
 
-        usuario.id = id;
+        usuario.id = String(id);
 
         if (usuarioExistente) {
           return throwError(
@@ -118,7 +118,7 @@ export class UsuarioService {
           // Armazena o usuário no localStorage
           this.localStorageService.armazenarUsuario(usuarioExistente);
           // Retorna o Observable do usuário encontrado
-          return this.buscarUsuario(usuarioExistente.id);
+          return this.buscarUsuario(Number(usuarioExistente.id));
         } else {
           // Retorna um erro se o usuário não for encontrado
           return throwError(
