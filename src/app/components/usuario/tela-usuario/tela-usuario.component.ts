@@ -37,7 +37,9 @@ export class TelaUsuarioComponent implements OnInit {
 
   logout() {
     this.usuarioService.logout();
-    this.roteador.navigate(['']);
+    this.roteador.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
   dados() {
     this.escolha = 'dados';
