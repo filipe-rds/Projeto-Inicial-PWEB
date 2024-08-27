@@ -74,6 +74,11 @@ export class TarefasComponent implements OnInit {
 
   salvarTarefa(tarefa: Tarefa): void {
     if (!this.disciplinaSelecionada) return;
+    // Verifique se os campos obrigatórios estão preenchidos
+    if (!tarefa.nome || !tarefa.descricao) {
+      this.sweet.erro('Por favor, preencha todos os campos obrigatórios');
+      return;
+    }
 
     try {
       const sucesso = this.usuarioService.criarTarefa(
@@ -85,7 +90,7 @@ export class TarefasComponent implements OnInit {
         this.sweet.sucesso('Tarefa criada com sucesso');
       }
     } catch (err) {
-      this.sweet.erro('Erro ao criar a tarefa' );
+      this.sweet.erro('Erro ao criar a tarefa');
     }
   }
 
